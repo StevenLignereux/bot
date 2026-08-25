@@ -2,8 +2,9 @@ const path = require('path');
 
 module.exports = {
   banner: {
-    width: 800,
-    height: 300,
+    useNativeImageSize: true,
+    defaultWidth: 2000,
+    defaultHeight: 600,
     backgroundColor: '#1a1a2e',
     backgroundImage: path.resolve(
       __dirname,
@@ -13,72 +14,75 @@ module.exports = {
       'images',
       'welcome.png'
     ),
-    overlayOpacity: 0.6,
+    overlayOpacity: 0,
     overlayColor: '#000000'
   },
 
-  avatar: {
-    size: 128,
-    x: 336,
+  textBackdrop: {
+    enabled: false,
+    x: 620,
     y: 40,
-    borderWidth: 6,
-    borderColor: '#e94560',
+    width: 1320,
+    height: 520,
+    cornerRadius: 32,
+    fillColor: 'rgba(0, 0, 0, 0.38)',
+    strokeEnabled: true,
+    strokeColor: 'rgba(255, 255, 255, 0.12)',
+    strokeWidth: 2,
+    shadowEnabled: true,
+    shadowColor: 'rgba(0, 0, 0, 0.6)',
+    shadowBlur: 24,
+    shadowOffsetX: 0,
+    shadowOffsetY: 6
+  },
+
+  avatar: {
+    size: 360,
+    x: 110,
+    y: 120,
+    borderWidth: 0,
+    borderColor: '#00000000',
     backgroundColor: '#16213e'
   },
 
   text: {
+    defaults: {
+      shadowColor: 'rgba(0, 0, 0, 0.85)',
+      shadowBlur: 18,
+      shadowOffsetX: 0,
+      shadowOffsetY: 4,
+      strokeColor: '#000000',
+      strokeWidth: 4,
+      lineJoin: 'round'
+    },
     title: {
-      content: 'Bienvenue sur le serveur !',
-      font: 'bold 36px "Default Font"',
+      content: 'Bienvenue',
+      font: 'bold 140px "Default Font"',
       color: '#ffffff',
-      x: 400,
-      y: 200,
+      x: 1280,
+      y: 150,
       align: 'center'
     },
     username: {
-      font: 'bold 28px "Default Font"',
-      color: '#e94560',
-      x: 400,
-      y: 240,
+      font: 'bold 90px "Default Font"',
+      color: '#ffffff',
+      x: 1280,
+      y: 305,
       align: 'center',
-      maxLength: 32
+      maxLength: 24
     },
     subtitle: {
-      content: 'Nous sommes heureux de te compter parmi nous',
-      font: '20px "Default Font"',
-      color: '#a8a8b3',
-      x: 400,
-      y: 275,
+      content: 'sur le serveur discord La Flotte exilée !',
+      font: 'bold 76px "Default Font"',
+      color: '#ffffff',
+      x: 1280,
+      y: 440,
       align: 'center'
     }
   },
 
   message: {
-    content: (member) => `🎉 Bienvenue ${member.user.toString()} sur le serveur !`,
-    embed: {
-      color: 0xe94560,
-      title: (member) => `Nouveau membre : ${member.user.tag}`,
-      description: (member) =>
-        `Souhaite la bienvenue à ${member.user.toString()} !\n` +
-        `Nous sommes maintenant **${member.guild.memberCount}** membres sur le serveur.`,
-      fields: [
-        {
-          name: '📅 Compte créé le',
-          value: (member) =>
-            `<t:${Math.floor(member.user.createdTimestamp / 1000)}:F>`,
-          inline: true
-        },
-        {
-          name: '🆔 ID',
-          value: (member) => `\`${member.user.id}\``,
-          inline: true
-        }
-      ],
-      footer: {
-        text: 'Guilde Bot - Système de bienvenue'
-      },
-      timestamp: true
-    }
+    content: (member) => `🎉 Bienvenue ${member.user.toString()} sur le serveur discord **La Flotte exilée** !`
   },
 
   font: {
