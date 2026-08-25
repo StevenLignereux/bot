@@ -35,28 +35,28 @@ module.exports = {
 
   sites: [
     {
-      name: 'Site 1',
+      name: 'Actus SWTOR',
       url: process.env.NEWS_SITE_1_URL,
       enabled: true,
       selectors: {
-        article: 'article, .post, .news-item, .article-item',
-        title: 'h1, h2, h3, .title, .post-title, .news-title',
-        link: 'a[href]',
-        description: 'p, .excerpt, .summary, .description, .post-excerpt',
-        image: 'img[src], .post-image img, .thumbnail img'
+        article: 'div.newsItem, div.newsList .newsItem',
+        title: ':scope > :first-child, h2, h3, [class*="title"]',
+        link: 'a[href*="article/"], a[href]',
+        description: '.newsDesc, span.newsDesc, .newsBlurb, p',
+        image: 'img[src], img[data-src]'
       },
       maxArticlesPerFetch: 10
     },
     {
-      name: 'Site 2',
+      name: 'Blog SWTOR',
       url: process.env.NEWS_SITE_2_URL,
       enabled: true,
       selectors: {
-        article: 'article, .post, .news-item, .article-item',
-        title: 'h1, h2, h3, .title, .post-title, .news-title',
-        link: 'a[href]',
-        description: 'p, .excerpt, .summary, .description, .post-excerpt',
-        image: 'img[src], .post-image img, .thumbnail img'
+        article: 'div.newsItem, div.newsList .newsItem',
+        title: ':scope > :first-child, h2, h3, [class*="title"]',
+        link: 'a[href*="blog/"], a[href*="article/"], a[href]',
+        description: '.newsDesc, span.newsDesc, .newsBlurb, p',
+        image: 'img[src], img[data-src]'
       },
       maxArticlesPerFetch: 10
     }
