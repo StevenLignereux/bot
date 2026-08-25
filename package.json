@@ -1,0 +1,27 @@
+{
+  "name": "guilde-discord-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord de guilde avec bannières de bienvenue et agrégation d'actualités",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "guilde",
+    "welcome",
+    "news"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "@napi-rs/canvas": "^0.1.52",
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3"
+  }
+}
