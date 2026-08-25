@@ -20,9 +20,9 @@ module.exports = {
 
   textBackdrop: {
     enabled: false,
-    x: 620,
+    x: 500,
     y: 40,
-    width: 1320,
+    width: 1480,
     height: 520,
     cornerRadius: 32,
     fillColor: 'rgba(0, 0, 0, 0.38)',
@@ -59,25 +59,26 @@ module.exports = {
       content: 'Bienvenue',
       font: 'bold 140px "Default Font"',
       color: '#ffffff',
-      x: 1280,
-      y: 150,
+      x: 1240,
+      y: 145,
       align: 'center'
     },
     username: {
-      font: 'bold 90px "Default Font"',
+      font: 'bold 82px "Default Font"',
       color: '#ffffff',
-      x: 1280,
-      y: 305,
+      x: 1240,
+      y: 300,
       align: 'center',
-      maxLength: 24
+      maxLength: 32
     },
     subtitle: {
       content: 'sur le serveur discord La Flotte exilée !',
-      font: 'bold 76px "Default Font"',
+      font: 'bold 64px "Default Font"',
       color: '#ffffff',
-      x: 1280,
-      y: 440,
-      align: 'center'
+      x: 1240,
+      y: 445,
+      align: 'center',
+      neverTruncate: true
     }
   },
 

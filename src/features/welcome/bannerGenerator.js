@@ -146,10 +146,13 @@ function drawEnhancedText(ctx, textConfig, textDefaults, canvasWidth, canvasHeig
   const positionY = textConfig.y !== undefined ? textConfig.y : canvasHeight / 2;
 
   let displayText = resolvedContent;
-  if (textConfig.maxLength && displayText.length > textConfig.maxLength) {
-    displayText = truncateText(ctx, displayText, truncateMaxWidth || canvasWidth * 0.6);
-  } else if (truncateMaxWidth) {
-    displayText = truncateText(ctx, displayText, truncateMaxWidth);
+  const neverTruncate = textConfig.neverTruncate === true;
+  if (!neverTruncate) {
+    if (textConfig.maxLength && displayText.length > textConfig.maxLength) {
+      displayText = truncateText(ctx, displayText, truncateMaxWidth || canvasWidth * 0.6);
+    } else if (truncateMaxWidth) {
+      displayText = truncateText(ctx, displayText, truncateMaxWidth);
+    }
   }
 
   let hasShadow = false;
@@ -270,9 +273,13 @@ async function generateWelcomeBanner(member, welcomeConfig) {
     }
 
     const textDefaults = (text && text.defaults) || {};
-    const truncateMaxWidth = (textBackdrop && textBackdrop.enabled && textBackdrop.width)
-      ? textBackdrop.width - 80
-      : canvasWidth - (avatarX + avatarSize) - 120;
+    const safeBackdropWidth = (textBackdrop && textBackdrop.enabled && textBackdrop.width)
+      ? textBackdrop.width
+      : canvasWidth - (avatarX + avatarSize);
+    const truncateMaxWidth = Math.max(
+      0,
+      (safeBackdropWidth > 0 ? safeBackdropWidth - 40 : canvasWidth * 0.8)
+    );
 
     drawEnhancedText(ctx, text.title, textDefaults, canvasWidth, canvasHeight, member, truncateMaxWidth);
 
